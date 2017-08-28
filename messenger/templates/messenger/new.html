@@ -1,0 +1,68 @@
+{% extends 'messenger/base_messages.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block title %}{% trans 'New message' %}{% endblock %}
+{% block page_header %}{% trans 'New message' %}{% endblock %}
+
+
+{% block container %}
+  <form class="form-horizontal" role="form" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="to" class="col-sm-1 control-label">To</label>
+      <div class="col-sm-11">
+        <input class="form-control typeahead" type="text" value="{{request.GET.t}}" id="to" name="to">
+      </div>
+    </div>
+<div class="form-group">
+
+      <label for="to" class="col-sm-1 control-label">msg</label>
+      <div class="col-sm-11">
+        <textarea class="form-control" id="message" name="message" placeholder="type your message" rows="4"></textarea>
+      </div>
+    </div>
+      <div class="form-group">
+
+      <label hidden for="to" class="col-sm-1 control-label">objet</label>
+
+      <div class="col-sm-11">
+
+      <input type="hidden" class="form-control"  value="{{request.GET.p}}" name="objet" >
+    </div>
+      <div class="form-group">
+
+      <label hidden for="to" class="col-sm-1 control-label">picture</label>
+
+      <div class="col-sm-11">
+
+      <input type="hidden" class="form-control"  value="{{request.GET.po}}" name="produit" >
+    </div>
+      </div>
+      <div class="form-group">
+
+      <label hidden for="to" class="col-sm-1 control-label">url</label>
+
+      <div class="col-sm-11">
+        <input type="hidden" class="form-control"  value="{{request.GET.z}}" name="url" >
+      </div>
+      </div>
+    <div class="form-group col-sm-offset-3">
+
+                <input id="id_image" type="file" value="" class=" col-sm-offset-7" name="image">
+      </div>
+    <div class="form-group" >
+      <div class=" col-sm-offset-2" style="position: relative; top:">
+        <button type="submit" class="btn btn-success btm-xs">Send</button>
+      </div>
+
+    </div>
+
+      </div>
+
+
+  </form>
+
+
+
+{% endblock container %}

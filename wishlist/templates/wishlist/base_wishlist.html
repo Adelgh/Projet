@@ -1,0 +1,28 @@
+{% extends 'produit/base.html' %}
+{% block body %}
+
+{% block head %}
+    {% load staticfiles %}
+
+    {% block wishlist_head %}{% endblock %}
+{% endblock %}
+
+{% block content %}
+    <style>
+        span.title {
+            font-size: 1.6em;
+        }
+        .collection:hover {
+            background-color: #eee;
+        }
+    </style>
+    <script></script>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {% block wishlist_content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% endblock %}

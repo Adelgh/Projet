@@ -1,0 +1,60 @@
+{% extends 'wishlist/base_wishlist.html' %}
+
+{% block wishlist_head %}
+
+{% endblock %}
+
+{% block wishlist_content %}
+<div class="row">
+    <div class="col-md-12">
+        <span class="title">Wishlist</span>
+        <span class="pull-right">
+            <a href="#" class="btn btn-sm btn-default new-collection">Nouveau collection</a>
+        </span>
+        <hr>
+    </div>
+</div>
+<div class="row new-collection-container" style="display:none;">
+    <div class="col-md-8 col-md-offset-2">
+        <form action="" method="post" id="new-collection-form">
+            {% csrf_token %}
+           <div class="input-group new-collection-input">
+                {{ form.name }}
+                <div class="input-group-btn">
+                    <input type="submit" class="btn btn-default" value="Create">
+                </div>
+            </div>
+        </form>
+    </div>
+</div><br>
+<div class="row collections">
+    {% for collection in wishlists %}
+        <div class="col-md-4">
+            {% include 'produit/discover_wishlists.html' %}
+        </div>
+    {% endfor %}
+</div>
+    <script>  $('.new-collection').on('click', function () {
+        $('.new-collection-container').slideToggle();
+        $('.new-collection-input').focus();
+    });
+    $('#new-collection-form').on('submit', function () {
+        var $this = $(this);
+        var collectionName = $('.new-collection-input').val();
+        if (collectionName.trim().length > 0)
+            $.ajax({
+                url: '/boutique/discover_wishlists/',
+                type: 'GET',
+                data: {
+                    name: collectionName,
+                },
+                success: function (data) {
+                    if (data.success) {
+                        $('.new-collection-container').slideToggle();
+                        $('.collections').prepend(data);
+                    }
+                }
+            });
+    });
+</script>
+{% endblock %}

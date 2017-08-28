@@ -1,0 +1,25 @@
+ {% extends 'produit/base.html' %}
+
+{% block body %}
+ <div class="container">
+        <div class="row">
+        <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h1 class="gallery-title position">Albums</h1>
+        </div>
+
+
+        <br/>
+
+
+
+{% for album in album %}
+            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
+
+            <a href="{% url 'detail_album' album.id  %}"><img  src= "{{ album.album.url }}" class=" col-md-push-4-4 col-lg-3 col-md-push-2" style="height: 250px; width: 250px;"></a>
+   </div>
+    {% endfor %}            </div>
+
+
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "produit/base.html" %}
+{% load static %}
+{% block body %}
+
+
+<div class="container-fluid  ">
+
+<div class="position active" style=" position : relative; left: -25px;">
+ <div class="row">
+<div class="col-sm-12">
+    {% for produit in produits %}
+<div class="col-lg-3">
+
+           {% if produit.etat == False%}
+         {% include 'reaction/interaction.html' with produit=produit liked=liked %}
+
+   {% endif %}
+</div>
+ {% endfor %}
+</div>
+ </div>
+</div>
+<div class=" active" style=" position : relative; left: 113px;">
+ <div class="row">
+<div class="col-sm-10">
+    {% for post in posts  %}
+
+        {% include 'post/Post_Acceuil.html' %}
+{% endfor%}
+</div>
+      </div>
+     </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+
+
+  <img src="{{ message.from_user.profile.get_picture }}" class="picture" >
+
+    <h5>
+      <small class="pull-right">
+        {{ message.date|date:'N d G:i' }}
+      </small>
+      <a href="{% url 'profile' message.from_user.username %}" style="position : relative; left : 10px;">{{ message.from_user.profile.get_screen_name }}</a>
+
+    </h5>
+<br>
+
+{% if message.objet  and message.photo_url and message.url and message.produit  %}
+  <h4>
+       <div style="position : relative; left : 20px;  ">
+   {{ message.message }}
+       </div>
+  <img src="{{message.photo_url|default_if_none:'' }}" style="width : 75px; height : 75px; ">
+      <div style="color : red ; ">object : {{message.objet}}</div>
+      <br>
+<div style="color : red ; ">
+  url : <a href="http://127.0.0.1:8000/boutique/vosproduit/{{message.url}}">http://127.0.0.1:8000/boutique/vosproduit/{{message.url}}
+   </a>
+</div>
+    </h4>
+        <br>
+
+  {% elif  message.objet   and message.photo_url %}
+
+  <h4><div style="color : red ; ">object : {{message.objet}}</div>
+      <br>
+      <div style="color : red ; ">
+    url :   <a href="http://127.0.0.1:8000/boutique/vosproduit/{{message.url}}">http://127.0.0.1:8000/boutique/vosproduit/{{message.url}}
+   </a>
+      </div>
+      <br>
+  <img src="{{message.photo_url|default_if_none:'' }}" style="width : 75px; height : 75px; ">
+
+    </h4>
+   <div style="position : relative; left : 28px; ">
+   {{ message.message }}
+        </div>
+  {% elif  message.produit %}
+<a  href="{{message.produit.logo.url}}" ><img src="{{message.produit.logo.url}}" style="width : 75px; height : 75px; "></a>
+
+{% elif  message.objet %}
+  <h4><div style="color : red ; ">object : {{message.objet}}</div>
+      <br>
+     <div style="color : red ; "> url :  <a href="http://127.0.0.1:8000/boutique/vosproduit/{{message.url}}">http://127.0.0.1:8000/boutique/vosproduit/{{message.url}}
+     </a></div>
+
+    </h4>
+   <div style="position : relative; left : 28px; ">
+   {{ message.message }}
+   </div>
+{% elif  message.photo_url %}
+      <a  rel="group" href="" ><img src="{{message.photo_url|default_if_none:'' }}" style="float : right ;width : 75px; height : 75px; " /></a>
+   <div style="position : relative; left : 28px;">
+   </div>
+  {% else %}
+  <div style="position : relative; top:-20px; left : 28px; ">
+{{message.message}}
+         </div>
+
+ {% endif %}
+

@@ -1,0 +1,20 @@
+
+
+
+.paginations {
+    color: gray;
+    border: 1px solid #ddd; /* Gray */
+        font-size: 19px;
+            left : 352px;
+    top : 72px;
+    display: inline-block;
+    position: relative;
+
+
+
+}
+.center {
+
+    color : blue;
+    text-align: center;
+}

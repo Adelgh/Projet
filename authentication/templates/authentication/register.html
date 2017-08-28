@@ -1,0 +1,38 @@
+{% extends 'produit/base_descover.html' %}
+{% block title %}Register{% endblock %}
+{% block register_active %}active{% endblock %}
+
+{% block body %}
+
+     <div class="login-box">
+        <div class="lb-header">
+            <a href="{% url 'login_user' %}" class="active" id="login-box-link">Login</a>
+            <a href="{% url 'register' %}" id="signup-box-link">Sign Up</a>
+        </div>
+
+
+
+
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="u-form-group">
+                            <div class="col-sm-offset-2 col-sm-12">
+                        {% include 'produit/form-template.html' %}
+                        </div>
+                            </div>
+                        <div class="u-form-group">
+                            <div class="col-sm-offset-4 col-sm-8" style="position : relative; top : -30px ; right : -10px;">
+                                <button type="submit" class="btn btn-success btn-xs">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+
+
+{% endblock %}
+

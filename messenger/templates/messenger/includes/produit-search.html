@@ -1,0 +1,45 @@
+        {%for produit in produit%}
+        <div class="col-sm-4 col-lg-4">
+
+           <form role="form"  class="send2 " csrf="{{csrf_token}}">
+          {% csrf_token %}
+
+
+          <input type="hidden"  name = "produit" value="{{produit.id}}">
+              <input type="hidden" name="to" value="{{ active }}">
+
+               <button type="submit" ><img src="{{produit.logo.url}}" style="width : 120px; height : 120px; color : white ;"></button>
+               <br>
+               {{produit.title}}
+               <br>
+               prix : {{produit.prix}}
+               <br>
+  <br>
+<br>
+  <br>
+  <br>
+           </form>
+                       </div>
+
+        {% endfor %}
+
+
+<script>
+$(".send2").submit(function () {
+    $.ajax({
+      url: '/messages/send/',
+      data: $(this).serialize(),
+      cache: false,
+      type: 'post',
+      success: function (data) {
+          $(".scroll").append(data);
+        $(".msg_container_base0").stop().animate({ scrollTop: $(".msg_container_base0")[0].scrollHeight}, 50);
+
+      }
+
+    });
+
+    return false;
+
+  });
+ </script>

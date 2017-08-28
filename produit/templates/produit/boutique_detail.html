@@ -1,0 +1,70 @@
+{% extends 'produit/base.html' %}
+{% block title %}{{ boutique }}{% endblock %}
+{% block albums_active %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid produits-container">
+
+    <div class="row">
+
+        <!-- Left Album Info -->
+        <div class="col-sm-4 col-md-5  position ">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                 <div class="col-sm-3 col-md-5">
+
+
+
+
+
+         <a href="{% url 'detail_album' boutique.id%}"><strong class="btn btn-primary" style="color: white;">view {{boutique.user.username}} album</strong></a></li>
+                {% if boutique.user == request.user %}
+                    <a href="{% url 'album' boutique.id %}" style="position :relative; left : 400px; top : -32px;"><strong class="btn btn-primary">add an album</strong></a></li>
+                {% endif %}
+
+
+                    <a href="{% url 'boutique:detail' boutique.id %}">
+                        {% if boutique.logo %}
+                            <img src="{{ boutique.logo.url }}" class="img-responsive" style="position: relative; width: 420px; height: 220px; left: 140px;">
+                        {% else %}
+                            <h3>No image to display</h3>
+                        {% endif %}
+                    </a>
+                    <h1>{{ boutique.name }} </h1>
+
+                </div>
+            </div>
+        </div>
+</div>
+
+        <!-- Right Song Info -->
+    <br>
+    <br>
+     <br>
+    <br>
+     <br>
+    <br>
+
+
+                        {% for produit in boutique.produit_set.all %}
+  <div class="gallery_product col-lg-2 col-sm-4">
+                                                        <div class="thumbnail">
+  <a href="{% url 'boutique:detail_produit' produit.id %}">
+    <img src="{{ produit.logo.url }}" alt="{{ produit.title }}" class="img-responsive-thumbnail" style="width : 160px ; height : 120px;">
+  </a>
+  <div class="caption">
+    <a href="{%url 'boutique:detail_produit' produit.id%}">
+      <h3 class="title">{{ produit.title }}</h3>
+    </a>
+    <span class="btn btn-primary btn-xs">{{ produit.prix }} DT</span>
+
+</div>
+                                            </div>
+                            </div>
+                        {% endfor %}
+
+</div>
+    </div>
+
+
+{% endblock %}

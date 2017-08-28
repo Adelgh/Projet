@@ -1,0 +1,27 @@
+{% extends 'produit/base.html' %}
+
+{% block body %}
+
+<div class="container">
+ <a href="{% url 'profile' user.username%}"><img src="{{ user.profile.get_picture }}"  style="height : 95px; width : 95px; position : relative; right : 27px; top : 110px;"></a>
+<a href="{% url 'profile'  user.username%}" style="position : relative; right : 97px; top : 190px; font-size : 20px;">{{user.username}} </a>
+
+    <button class="post-form-button" style="position : relative; top : 120px; left : 180px; width : 30%;"><span><h5>post something</h5></span></button>
+    <form class="post-form form-horizontal" id = "post" role="form" action="" method="post" enctype="multipart/form-data" style="display : none ; position :relative; top : 150px ; left : 120px;">
+                        {% csrf_token %}
+                        {% include 'post/form-template.html' %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+    <div class="scroll">
+{%for categorie in posts%}
+        {% include "post/post.html" with categorie=categorie %}
+
+    {%endfor%}
+    </div>
+
+    </div>
+{% endblock %}

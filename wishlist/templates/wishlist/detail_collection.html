@@ -1,0 +1,41 @@
+{% extends 'wishlist/base_wishlist.html' %}
+
+{% block wishlist_head %}
+    {% load static %}
+
+    <script type="text/javascript" src="{% static 'js/reaction-animations.js' %}"></script>
+{% endblock %}
+
+{% block wishlist_content %}
+    <div class="row">
+        <div class="col-md-12">
+            <span class="title">{{ collection.name }}</span>
+            <span class="pull-right" id="item-count">({{ collection.produit_set.count }} items)</span>
+            <hr>
+        </div>
+    </div>
+
+
+    <div class="collection-items position">
+        <div class="row">
+            {% for product in collection.produit_set.all %}
+                <div class="col-md-3 collection-item">
+                    <div class="panel panel-default">
+                        {% if request.user == collection.wishlist.user %}
+                        <div class="panel-heading">
+                            <a href="#" data-product-id="{{ produit.id }}" data-collection-id="{{ collection.id }}" class="remove-product">Remove from wishlist</a>
+                        </div>                        
+                        {% endif %}
+                        <div class="panel-body">
+                            {% include 'wishlist/interaction.html' with product=product%}
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter in rows %}
+                </div>
+                <div class="row">
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

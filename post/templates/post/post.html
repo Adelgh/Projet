@@ -1,0 +1,45 @@
+
+  <div class="container" style=" position: relative; right: 90px;">
+
+      <div class="force-overflow"></div>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <div class="row">
+    <!-- Contenedor Principal -->
+
+    <div class="comments-container product">
+                <ul class="comments-list reply-list">
+                    <li>
+                        <!-- Avatar -->
+                        <div class="comment-avatar" style=" position: relative; top : 40px; right: 70px;"><img src="{{ post.user.profile.get_picture }}" alt=""></div>
+
+                    </li>
+
+
+                    <li>
+                        <!-- Avatar -->
+                        <!-- Contenedor del Comentario -->
+                        <div class="comment-box" style="width: 630px; height: 300px;">
+                            <div class="comment-head" style="width: 820px;">
+                                <h6 class="comment-name by-author">{{post.user.username}}</h6>
+                                <span>{{post.date}}</span>
+
+                            </div>
+                            <div class="comment-content" style=" height: 300px; width: 820px;">
+                                  {{post.post}}
+                                <br>
+                                {% if post.image.url != None %}
+                                  <img src="{{post.image.url}}" style="width: 30%; height: 60%;">
+                                {% endif %}
+                            </div>
+
+
+
+                            </div>
+                    </li>
+                    </ul>
+
+</div>
+    </div>
+
+  </div>
+

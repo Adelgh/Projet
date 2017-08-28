@@ -1,0 +1,65 @@
+{% extends 'produit/base.html' %}
+
+{% block body %}
+
+{%for post in posts%}
+     <div class="force-overflow" >
+      </div>
+  <div class="container-fluid" style=" position: relative; right: 90px;">
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <div class="row" style="margin-bottom: -255px;">
+    <div class="comments-container product" style="position: relative; left: 90px;">
+                <ul class="comments-list reply-list" >
+                    <li>
+                        <!-- Avatar -->
+                        <div class="comment-avatar" style=" position: relative; top : 40px; right: 50px;"><img src="{{ post.user.profile.get_picture }}" alt=""></div>
+
+                    </li>
+
+
+                    <li>
+
+                        <div class="comment-box" >
+                            <div class="comment-head">
+                                <h6 class="comment-name by-author"><a href="{% url 'user_post' post.user %}">{{post.user.username}}</a></h6>
+                                <span>{{post.date}}</span>
+                               <i>{% include 'reaction/post_interaction.html' with  liked=liked  %}</i>
+                               <i>{% include 'reaction/comment_reaction.html' with  comment=comment  %}</i>
+
+                            </div>
+                            <div class="comment-content">
+                                  {{post.post}}
+                                <br>
+                                {% if post.image.url != None %}
+                                  <img src="{{post.image.url}}" style="width: 20%; height: 20%;">
+                                {% endif %}
+                            </div>
+
+
+
+                            </div>
+                    </li>
+                    </ul>
+
+
+{% include 'post/commentaire.html' with form=form post=post %}
+
+<div class="scrollbarr"  >
+
+{%for comment in post.commentaire_set.all %}
+        {% include "post/comment.html" with comment=comment %}
+{%endfor%}
+</div>
+    </div>
+
+    </div>
+</div>
+
+{% endfor %}
+
+
+{% endblock %}
+
+

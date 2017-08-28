@@ -1,0 +1,22 @@
+
+<div class=" col-md-push-4-4 col-lg-3 ">
+
+      <div class=" media" style="position: relative; right: 20px; ">
+   <div class="caption well" style="height: 370px; ">
+{%if post.image.url != None %}
+    		<a href="{% url 'user_posts' post.id%}"> <img class="media-object" src="{{post.image.url}}" style="width : 70% ; height : 50% ;  "> {%endif%}
+  		</a>
+
+  		<div class="media-body" >
+            <a href="{% url 'user_post' post.user %}"><h4 class="media-heading">{{post.user}}</h4></a>
+
+                <p>{{post.post}}</p>
+        </div>
+          <a href="{% url 'user_posts' post.id%}"><i class="glyphicon glyphicon-comment" style="position: relative; left: 200px; top: 0px;"></i></a>
+<div style="position: relative;  top: -10px;">
+{% include 'reaction/post_interaction.html' with  liked=liked  %}
+    </div>
+         </div>
+
+</div>
+</div>

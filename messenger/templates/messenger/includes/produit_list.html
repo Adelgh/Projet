@@ -1,0 +1,36 @@
+{% load static %}
+  <link href="{% static 'css/scroll.css' %}" rel="stylesheet">
+  <script src="{% static 'js/search.js' %}"></script>
+
+{%for produit in produit1%}
+  <div style="position :relative; left:200px; top : -460px;">
+
+  <a href="{% url 'boutique:detail_produit' produit.id %}"  class="send-produit"><img src="{{ produit.logo.url }}"  style="width:125px; height:125px margin : 10 px; ">
+      <div class="thumbnail" style="width : 125px; text-align : center ;"><strong>{{produit.title}}<br> prix : {{produit.prix}}</strong> </div></a> </div>
+  <br>
+  <br>
+  <br>
+
+ {% endfor %}
+<div class="form-group " style="position:relative; left: 210px; top:-500px;">
+
+    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal" style="color : black ;" ><strong>afficher plus... </strong></button>
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog scroll">
+      <div class="modal-content scroll">
+<div class="modal-header">
+    <input class="form-control form" type="text" id="product-search" name="product-search" placeholder="Search product" style="width: 550px;">
+
+    <div class="produit">
+               {% include 'messenger/includes/produit-search.html' with produit=produit page=page %}
+    </div>
+
+</div>
+
+    </div>
+
+  </div>
+
+</div>
+</div>
+

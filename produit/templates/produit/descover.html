@@ -1,0 +1,38 @@
+{% extends 'produit/base_descover.html' %}
+
+{% block title %}Tous les produuits{% endblock %}
+{% block songs_active %}active{% endblock %}
+<div class="col-sm-offset-1 ">
+{% block pagination %}
+
+{% block body %}
+    <div class="container-fluid Produits-container">
+    {% for produit in produits %}
+        <div class="col-sm-2 col-lg-4">
+            <div class="thumbnail">
+
+            {% if produit.etat == False%}
+                <a href="{% url 'boutique:detail_produit' produit.id %}" > <img src="{{ produit.logo.url }}"  style="width:500px;height:200px;" class="img-responsive"></a>
+                <div>{{ produit.title }}</div>
+
+                <div class="caption">
+
+{% for produit in prix %}
+
+<li>Prix  <input id="ex2" type="text" class="span2" value="{% url 'boutique:prix' %}" onchange="callFun(this.value)" data-slider-min="0" data-slider-max="1000" data-slider-step="5" data-slider-value="0"/> <b>€</b>
+{%endfor%}
+     <a href="{% url 'messages' produit.user.username%}"><i class="fa fa-comments" style="color :#4B0082; position: relative; left:345px; top : 0px;"></i><span class="button__badge1" ></span></a>
+
+
+{% endif %}
+
+        </div>
+            </div>
+              </div>
+
+    {% endfor %}
+{% include "produit/pagination.html" with page=produits %}
+    </div>
+  </div>
+{% endblock %}
+{% endblock %}

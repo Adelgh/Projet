@@ -1,0 +1,43 @@
+{% extends 'wishlist/base_wishlist.html' %}
+
+{% block wishlist_head %}
+    
+{% endblock %}
+{% block wishlist_content %}
+<div class="row">
+    <div class="col-md-12 position">
+        <span class="title">
+            {% if request.user == wishlistuser %}
+            My Wishlist
+            {% else %}
+            {{ wishlistuser.username }}'s Wishlist
+            {% endif %}
+        </span>
+        {% if request.user == wishlistuser %}
+        <span class="pull-right">
+            <a href="#" class="btn btn-sm btn-default new-collection">New collection</a>
+        </span>        
+        {% endif %}
+        <hr>
+    </div>
+</div>
+<div class="row new-collection-container " style="display:none;">
+    <div class="col-md-8 col-md-offset-2">
+        <form action="" class="new-collection-form">
+            <div class="input-group">
+                <input type="text" placeholder="Name for new collection" class="form-control new-collection-input">
+                <div class="input-group-btn">
+                    <input type="submit" class="btn btn-default" value="Create">
+                </div>
+            </div>
+        </form>
+    </div>
+</div><br>
+<div class="row collections">
+    {% for collection in collections %}
+        <div class="col-md-4">
+            {% include 'wishlist/includes/collection.html' with collection=collection %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

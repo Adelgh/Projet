@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        {% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'produit/css/pagination_fix.css' %}"/>
+<div class="paginations  center ">
+<span class="step-links">
+ <div class="thumbnail">
+
+<body>
+ {% if page.has_previous %}
+                    <a href="?page={{ page.previous_page_number }}">prev</a>
+                {% endif %}
+                <span class="current">
+                    page {{ page.number }} of {{ page.paginator.num_pages }}
+                </span>
+
+                {% if page.has_next %}
+                    <a href="?page={{ page.next_page_number }}">next</a>
+                {% endif %}
+
+
+</span>
+</div>
+</div>
+{% block pagination %} {% endblock %}
+ </body>
+</head>
+</html>

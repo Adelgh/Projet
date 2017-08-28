@@ -1,0 +1,27 @@
+{% load static %}
+    <div>
+
+          <span class="likes">
+
+    {% if post.get_likes_count >= 0 %}
+
+      {{ post.get_likes_count }} like{% if post.get_likes_count.count > 1 %}s{% endif %}
+        {% endif %}
+
+    </span>
+         <a>
+<button data-id="{{post.id }}" data-reaction="like" class="reaction-post like" style="background-color: transparent; border: none;">
+
+<i class="fa fa-thumbs-up" aria-hidden="true"></i>   </button> </a>
+  <span class="dislikes">
+
+     {% if post.get_dislikes_count >= 0 %}
+      {{ post.get_dislikes_count }} dislike{% if post.get_likes_count.count > 1 %}s{% endif %}
+    {% endif %}
+
+    </span>
+ <a>
+
+<button  data-id="{{ post.id }}" data-reaction="dislike" id='res-cancel-message' class="reaction-post dislike" style="background-color: transparent; border: none;">
+     <i class="fa fa-thumbs-down" aria-hidden="true"> </i> </button> </a>
+    </div>

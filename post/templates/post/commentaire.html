@@ -1,0 +1,16 @@
+
+
+    <form class="newsletterform post-form form-horizontal position" id="comment" role="form" data-post-id="{{ post.id }}" action="{% url 'comment' post.id %}" method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+
+
+        <input type="text" name="text" value="{{ request.GET.text }}"  style="height:35px; border:1px solid #bbb; width: 510px; position: relative; left: 10px; top : -80px;">
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success" style=" position: relative; left: 435px; top : -115px;"><span>Comment</span></button>
+            </div>
+        </div>
+    </form>
+
+

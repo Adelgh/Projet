@@ -1,0 +1,175 @@
+{% extends 'produit/base_descover.html' %}
+{% block body %}
+
+    <div class="login-box" style="position: relative; top: -50px; left: 450px;  z-index: 100;">
+
+        <div class="lb-header ">
+            <a href="{% url 'login_user' %}" class="active" id="login-box-link">Login</a>
+            <a href="{% url 'register' %}" id="signup-box-link">Sign Up</a>
+
+        </div>
+
+   <form class="email-login"  action="{% url 'login_user'%}" method="post" enctype="multipart/form-data">
+       {% csrf_token %}
+       <div class="u-form-group">
+           <div class="col-sm-10">
+           <input  maxlength="30"  name="username" type="text" placeholder="username">
+               <br>
+               <br>
+       </div>
+       </div>
+
+
+       <div class="u-form-group">
+
+        <div class="col-sm-10">
+
+            <input  maxlength="30" placeholder="password" name="password" type="password">
+            <br>
+               <br>
+        </div>
+       </div>
+        <div class="u-form-group">
+
+            <div class="col-sm-offset-1 col-sm-8">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+
+    </form>
+
+
+  </div>
+
+
+<head>
+	<meta http-equiv="x-dns-prefetch-control" content="on">
+
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="renderer" content="webkit">
+    <meta name="data-spm" content="a2g0s">
+  <meta name="robots" content="noindex" />
+</head>
+  <div class="page" class="frameA signIn clearfix" style="position: relative; top: -560px;">
+<input id="login-home-new" type="hidden" value="new" />
+
+<div class="container">
+
+  <div id="signInField">
+
+      	<!--ams-region-start 782-->
+<style type="text/css">.banner {display:none; padding:25px; color:#666; font-family:Arial; height:450px; width:990px; margin:auto;}
+.banner .banner-title {font-weight:bold; font-size:24px; padding:0 15px; line-height:30px;}
+.banner .banner-text {font-size:12px; margin-top:10px; line-height:20px; padding:0 15px;}
+.banner-1 {padding:50px 0 0 0;}
+.banner-2, .banner-3 {padding-left:0;}
+.banner-1 .banner-title, .banner-2 .banner-title, .banner-3 .banner-title {padding-left:0px;}
+.banner-1 .banner-text, .banner-2 .banner-text, .banner-3 .banner-text {padding-left:0px;}
+.page.page-bg-1 {background-image: url(https://i.alicdn.com/ae-login/images/banner-1.bb9edba7.png) !important}
+.page.page-bg-2 {background-image: url(https://i.alicdn.com/ae-login/images/banner-2.9db93b48.png) !important}
+.page.page-bg-3 {background-image: url(https://i.alicdn.com/ae-login/images/banner-3.24cff00d.png) !important}
+</style>
+<div class="banner-container">
+	<div class="banner banner-1">
+		<h3 class="banner-title">Smarter Shopping</h3>
+
+		<h3 class="banner-title">Better Living!</h3>
+		<ul class="banner-text">
+			<li>Choose from over 40 different categories</li>
+			<li>with millions of products</li>
+		</ul>
+	</div>
+
+	<div class="banner banner-2">
+		<h3 class="banner-title">The Best Value Online</h3>
+		<ul class="banner-text">
+			<li>Enjoy unbeatable prices and free shipping</li>
+			<li>on almost all products!</li>
+		</ul>
+	</div>
+
+	<div class="banner banner-3">
+		<h3 class="banner-title">Shop With Confidence</h3>
+		<ul class="banner-text">
+			<li>from click to delivery</li>
+		</ul>
+	</div>
+</div>
+<script>
+function jumpToLinkPage(url){
+    window.open(url);
+}
+
+var activity = document.getElementById('activity');
+if(activity && activity.innerHTML) {
+  var cont = document.querySelector('.banner-container');
+  if(cont) {
+  	cont.style.display = 'none';
+  }
+}else{
+  var randomIndex = (Math.random() * 100).toFixed(0) % 3;
+  var cont = document.querySelector('.page');
+  if(cont) {
+    cont.className += ' page-bg-' + (randomIndex+1);
+    var banners = document.querySelectorAll('.banner');
+    banners[randomIndex].style.display = 'block';
+
+    var linksOfBackgroud = ['', '', ''];
+    if(linksOfBackgroud[randomIndex] && linksOfBackgroud[randomIndex].length != 0) {
+        var onclick = banners[randomIndex].getAttribute("onclick");
+        if(typeof(onclick) != "function") {
+            banners[randomIndex].setAttribute('onclick', 'jumpToLinkPage(linksOfBackgroud[randomIndex]);');
+        } else {
+            banners[randomIndex].onclick = function() {
+                jumpToLinkPage(linksOfBackgroud[randomIndex]);
+            };
+        }
+        banners[randomIndex].style.cursor = 'pointer';
+
+        var bannerTitles = document.querySelectorAll('.banner-title');
+        for(var i = 0, l = bannerTitles.length; i < l; i++) { bannerTitles[i].style.display = 'none'; }
+        var bannerTexts = document.querySelectorAll('.banner-text');
+        for(var i = 0, l = bannerTexts.length; i < l; i++) { bannerTexts[i].style.display = 'none'; }
+    }
+  }
+}</script>
+<!--ams-region-end 782-->
+  </div>
+
+  <div style="clear:both;"></div>
+</div>
+
+<script type="text/javascript">
+var xUrlForForcedReturn = 'http://my.aliexpress.com/wishlist/wish_list_product_list.htm?spm=a2g01.8286187.1000002.3.50f3aef4f5zjEB';
+function xman_callback(){
+  window.location.href = 'http://my.aliexpress.com/wishlist/wish_list_product_list.htm?spm=a2g01.8286187.1000002.3.50f3aef4f5zjEB';
+}
+var ae_xman_config = {
+    serviceUnavailable:'Service is unavailable, please retry again later.',
+    isNew:'new',
+    mode:'run',
+    isInBucket:eval("true"),
+    isToNewHavanaDomain:eval("true"),
+    xloginPassport: "",
+    u_token:'Bc29e782b0ae96881d3e4e2fa9b294d57',
+    needUMID : eval("true"),
+    umidTimestamp: "5909460854555949554F6575",
+    umidServer: "https://us.ynuf.alipay.com",
+    serviceLocation: "us"
+};
+
+seajs.iuse("//i.alicdn.com/ae-login/login/buyerlogin.js")(function(Home) {
+  Home();
+});
+</script>
+</div>
+
+<!-- -->
+
+</body>
+</html>
+
+
+
+{% endblock %}

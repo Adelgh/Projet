@@ -1,0 +1,108 @@
+{% extends "produit/base.html" %}
+{% block title %}Tous les produits{% endblock %}
+{% block songs_active %}active{% endblock %}
+
+{% block pagination %}
+
+{% block body %}
+<div class="container-fluid  ">
+
+<div id="wrapper" class="active ">
+      <div id="sidebar-wrapper">
+      <ul id="sidebar_menu" class="sidebar-nav">
+           <li class="sidebar-brand"><a id="menu-toggle" href="#">Filters<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
+      </ul>
+        <ul class="sidebar-nav" id="sidebar">
+<li>
+    <form  method="get" action="{% url 'boutique:prix' %} "  >
+<span>
+    <button class="sub_icon btn btn-outline-success my-2 " name="categorie" value="bijoux" type="submit" >bijoux({{bijoux}})</button>
+    <br>
+    <button class="sub_icon btn btn-outline-success my-2 my-sm-0" name="categorie" value="maison et ameublement" type="submit">maison et ameublement({{bijoux1}})</button>
+        <br>
+    <button class="sub_icon btn btn-outline-success my-2 my-sm-0" name="categorie" value="vetements" type="submit">vetements({{bijoux2}})</button>
+        <br>
+    <button class="sub_icon btn btn-outline-success my-2 my-sm-0" name="categorie" value="art et collections" type="submit">art et collections({{bijoux3}})</button>
+        <br>
+    <button class="sub_icon btn btn-outline-success my-2 my-sm-0" name="categorie" value="accessoires" type="submit">accessoires({{bijoux4}})</button>
+        <br>
+    <button class="sub_icon btn btn-outline-success my-2 my-sm-0" name="categorie" value="sacs et bagages" type="submit">sacs et bagages({{bijoux5}})</button>
+        <br>
+     <button class="sub_icon btn btn-outline-success my-2 my-sm-0" name="categorie" value="mariage" type="submit">mariage({{bijoux6}})</button>
+</span>
+
+
+
+<input type="hidden" name="q" value="{{ request.GET.q }}">
+       {%if request.GET.b != null%}
+    <input type="hidden" name="b" value="{{ request.GET.b }}">
+    {%endif%}
+  <input type="hidden" name="time" value="{{ request.GET.time }}">
+
+
+</form>
+</li>
+          <li><form class="sub_icon" method="get" action="{% url 'boutique:prix' %}"  >
+    <input id="ex2" type="text" class="span2"  name="b" data-slider-min="10" data-slider-max="2000" data-slider-step="1" />
+    <input class="btn btn-outline-success my-2 my-sm-0" type="submit" data-inline="true" value="Submit" style="position: relative; left:20px;" >
+
+       <input type="hidden"  name="q" value="{{ request.GET.q }}">
+        <input type="hidden" name="time" value="{{ request.GET.time }}">
+        <input type="hidden" name="categorie" value="{{ request.GET.categorie }}">
+
+</form>
+</li>
+  <li>
+
+       <form METHOD="GET" action="{% url 'boutique:prix' %}"  >
+
+                <select class="btn btn-outline-success my-2 my-sm-0 sub_icon" name="time">
+                     <option  value="recent">recent</option>
+                     <option  value="anciens">anciens</option>
+
+                     <option  value="prix croissant">prix croissant</option>
+                     <option  value="prix decroissant">prix decroissant</option>
+                </select>
+                <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="search" >
+                <input type="hidden" name="q" value="{{ request.GET.q }}">
+                           {%if request.GET.b != null%}
+                    <input type="hidden" name="b" value="{{ request.GET.b }}">
+                    {%endif%}
+                  <input type="hidden" name="categorie" value="{{ request.GET.categorie }}">
+
+        </form>
+  </li>
+        </ul>
+      </div>
+    </div>
+
+</div>
+</div>
+
+<div class="container">
+                <div class="position row ">
+                    <div class="col-lg-12 ">
+    {% for produit in produits %}
+<div class="col-md-push-4-4 col-lg-3 col-md-push-2">
+
+           {% if produit.etat == False%}
+         {% include 'reaction/interaction.html' %}
+   {% endif %}
+</div>
+ {% endfor %}
+</div>
+      </div>
+     </div>
+
+
+
+
+
+<div class="col-md-push-4-4 col-lg-8 col-md-push-2">
+
+
+    {% include "produit/pagination.html" with page=produits %}
+
+</div>
+{% endblock %}
+{% endblock %}

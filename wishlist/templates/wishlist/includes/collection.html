@@ -1,0 +1,11 @@
+{% if collection %}
+<div class="panel panel-default collection">
+    <div class="panel-body">
+        <a href="{% url 'detail_collection' collection.id %}" class="name">{{ collection.name }}</a>
+        <span class="items-count">({{ collection.produit_set.count }} items)</span>
+        {% if request.user == collection.wishlist.user or new %}
+        <span class="pull-right delete-collection" data-collection-id="{{ collection.id }}">&times;</span>       
+        {% endif %}
+    </div>
+</div>
+{% endif %}

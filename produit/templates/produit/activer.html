@@ -1,0 +1,118 @@
+{% extends 'produit/base.html' %}
+{% block title %}{{ boutique }}{% endblock %}
+{% block albums_active %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid produits-container">
+
+    <div class="row">
+
+        <!-- Left Album Info -->
+        <div class="col-sm-4 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a href="{% url 'boutique:detail' produit_id %}">
+                        {% if boutique.logo %}
+                            <img src="{{ boutique.logo.url }}" class="img-responsive">
+                        {% else %}
+                            <h3>No image to display</h3>
+                        {% endif %}
+                    </a>
+                    <h1>{{ boutique.name }} </h1>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Song Info -->
+        <div class="col-sm-8 col-md-9">
+
+            <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                <li role="presentation" class="active"><a href="{% url 'boutique:detail' boutique.id %}">View All</a></li>
+                <li role="presentation"><a href="{% url 'boutique:create_produit' boutique.id %}">Ajouter New Produit</a></li>
+            </ul>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <h3>All products</h3>
+
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                             <th>product name</th>
+
+                            <th>product logo</th>
+                            <th>  Etat</th>
+                             <th>duplicate</th>
+                          <th>Edit</th>
+
+                            <th>Delete</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for produit in boutique.produit_set.all %}
+                            <tr>
+                               <td> <li><a href="{% url 'boutique:detail_produit' produit.id %}"> {{produit.title}}</a></li>
+
+                                <td><img src="{{produit.logo.url}}" class="img-responsive" style="width: 50px"; height="50px";></td>
+
+                            <td> {% if produit.etat == False%}
+                                    <a href="{% url 'boutique:Activer' produit.id %}" > <input class="active" type="button" value="desactiver"> </a>
+                                    <a href="{% url 'boutique:detail_produit' produit.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
+                                    {% elif produit.etat == True %}
+                                    <a href="{% url 'boutique:Activer' produit.id %}" > <input type="button" value="Activer"> </a>
+                                     {% endif %}
+                            </td>
+                            <td><a href="{% url 'boutique:produit_copy'  produit.id %}" > <input type="button" value="duplicate"> </a>
+</td>
+                            <td>
+                                <form action="{% url 'boutique:produitUpdate' boutique.id produit.id %}" method="post" style="display: inline;">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="produit_id" value="{{ produit.id }}" />
+                                        <button type="submit" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-edit"></span>&nbsp; Edit
+                                        </button>
+                                    </form>
+                            </td>
+                                <td>
+
+                                     <div class="delete-container">
+
+                                    <form action="{% url 'boutique:delete_produit' boutique.id produit.id %}" method="post" style="display: inline;" >
+                                        {% csrf_token %}
+
+                                        <input type="hidden" name="produit_id" value="{{ produit.id }}" />
+
+                                        <button type="submit" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-remove"></span>&nbsp;
+
+                                                    Delete
+
+                                        </button>
+                                    </form>
+
+                                  </div>
+
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

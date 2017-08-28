@@ -1,0 +1,389 @@
+body {
+ background-color : #F0FFFF;
+  }
+
+.navbar{
+
+    border-radius: 0;
+         position: fixed;
+         width :100% ;
+
+}
+
+.navbar-inverse {
+     background-color: black;
+    z-index: 1010;
+         position: fixed;
+
+}
+
+.navbar-brand{
+    font-family: 'satisfy', cursive;
+
+}
+
+.glyphicon-heart {
+    color: #CCCCCC;
+    font-size: 25px;
+}
+
+.glyphicon-heart.active {
+    color: #ac0502;
+}
+
+.fa-smile-o {
+    size: 30px;
+    font-size: 30px;
+    color: #080808;
+
+}
+
+.fa-smile-o.active {
+        size: 20px;
+        font-size: 30px;
+        color: #008000;
+
+}
+
+
+.img-responsive {
+    margin: 0 auto;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+#footer {
+        position: relative;
+        height: 50px;
+        clear: both;
+        font-family: Verdana, sans-serif;
+        font-size: 14px;
+        text-align: center;
+        color: black;
+}
+
+
+
+.button__badge {
+  background-color: #fa3e3e;
+  border-radius: 10px;
+  color: white;
+
+  padding: 3px 2px;
+  font-size: 13px;
+
+  position: absolute;
+  top: 0;
+  right: 5;
+}
+
+
+#notifications {
+    width: 450px;
+    padding: 0;
+    margin-top: 10px;
+    box-shadow: 4px 4px 20px #878787;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+  }
+#notifications hr {
+    padding: 0;
+    margin: 0;
+  }
+  .notification {
+    color: black;
+    padding: 10px 15px;
+    margin: 0;
+  }
+  .notification p {
+    color: #787878;
+    font-size: 0.9em;
+  }
+  .notification:hover {
+    background-color: #eee;
+  }
+  .notifications-header a {
+    display: block;
+    margin: 0;
+    padding: 10px;
+    text-align: left;
+    text-decoration: none;
+    background-color: #d9e7d9;
+  }
+  .show-notifications a {
+    display: block;
+    margin: 0;
+    padding: 20px 15px;
+    background-color: #eee;
+    text-align: center;
+  }
+  .notification-badge {
+     position:absolute;
+     top: 15px;
+     right: 0;
+     font-size:.7em;
+     background:red;
+     font-weight: bold;
+     color:white;
+     width:16px;height:16px;
+     text-align:center;
+     line-height:16px;
+     border-radius:50%;
+     box-shadow:0 0 1px #333;
+  }
+
+
+.position {
+position : relative ;
+margin : 100px  120px;
+}
+.positionb {
+position : relative ;
+margin : 120px  120px;
+}
+.position.active {
+position : relative ;
+margin : 100px  120px;
+left : 95px;
+}
+
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+.hide-bullets {
+    list-style:none;
+    margin-left: -40px;
+    margin-top:20px;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+    width: 100%;
+}
+
+.col-sm-3 a {
+    border: 1px solid transparent;
+    border-radius: 0;
+}
+
+.col-sm-3 a:hover {
+    border: 1px solid #ff4647;
+    border-radius: 100% 60% / 30% 10%;
+    background: linear-gradient(rgba(56,123,131,0.7),rgba(56,123,131,0.7));
+}
+
+
+
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300);
+#cssmenu {
+  position: relative;
+  margin: 0;
+  font-family: 'Roboto Condensed';
+  line-height: 1;
+  width: 250px;
+}
+.align-right {
+  float: right;
+}
+#cssmenu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: block;
+}
+#cssmenu ul li {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+#cssmenu ul li a {
+  text-decoration: none;
+  cursor: pointer;
+}
+#cssmenu > ul > li > a {
+  color: #dddddd;
+  text-transform: uppercase;
+  display: block;
+  padding: 20px;
+  border-top: 1px solid #599bb3;
+  border-left: 1px solid #599bb3;
+  border-right: 1px solid #599bb3;
+  background: #599bb3;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  letter-spacing: 1px;
+  font-size: 16px;
+  font-weight: 300;
+
+  position: relative;
+}
+#cssmenu > ul > li:first-child > a {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+#cssmenu > ul > li:last-child > a {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom: 1px solid #599bb3;
+}
+#cssmenu > ul > li:hover > a,
+#cssmenu > ul > li.open > a,
+#cssmenu > ul > li.active > a {
+  background: #599bb3;
+  color: #ffffff;
+}
+#cssmenu ul > li.has-sub > a::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 13px solid #3e8e41;
+
+  left: 0;
+  bottom: -13px;
+  bottom: 0px;
+  z-index: 1;
+  opacity: 0;
+  : all .2s ease;
+}
+#cssmenu ul > li.has-sub > a::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 13px solid #777777;
+
+  left: 0;
+  bottom: -12px;
+  bottom: -1px;
+  z-index: 3;
+  opacity: 0;
+
+}
+#cssmenu ul > li.has-sub::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top-color: #dddddd;
+  z-index: 2;
+  right: 20px;
+  top: 24.5px;
+  pointer-events: none;
+}
+#cssmenu ul > li:hover::after,
+#cssmenu ul > li.active::after,
+#cssmenu ul > li.open::after {
+  border-top-color: #ffffff;
+}
+#cssmenu ul > li.has-sub.open > a::after {
+  opacity: 1;
+  bottom: -13px;
+}
+#cssmenu ul > li.has-sub.open > a::before {
+  opacity: 1;
+  bottom: -12px;
+}
+#cssmenu ul ul {
+  display: none;
+}
+#cssmenu ul ul li {
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+#cssmenu ul ul li a {
+  background: #e4e4e4;
+  display: block;
+  position: relative;
+  font-size: 15px;
+  padding: 14px 20px;
+  border-bottom: 1px solid #dddddd;
+  color: #777777;
+  font-weight: 300;
+
+}
+#cssmenu ul ul li:first-child > a {
+  padding-top: 200px;
+}
+#cssmenu ul ul ul li {
+  border: 0;
+}
+#cssmenu ul ul li:hover > a,
+#cssmenu ul ul li.open > a,
+#cssmenu ul ul li.active > a {
+  background: #e4e4e4;
+  color: #666666;
+}
+#cssmenu ul ul > li.has-sub > a::after {
+  border-top: 13px solid #dddddd;
+}
+#cssmenu ul ul > li.has-sub > a::before {
+  border-top: 13px solid #e4e4e4;
+}
+#cssmenu ul ul ul li a {
+  padding-left: 30px;
+}
+#cssmenu ul ul > li.has-sub::after {
+  top: 18.5px;
+  border-width: 6px;
+  border-top-color: #777777;
+}
+#cssmenu ul ul > li:hover::after,
+#cssmenu ul ul > li.active::after,
+#cssmenu ul ul > li.open::after {
+  border-top-color: #666666;
+}

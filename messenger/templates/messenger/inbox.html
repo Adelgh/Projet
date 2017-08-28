@@ -1,0 +1,60 @@
+{% extends "messenger/base_messages.html" %}
+{% load i18n %}
+
+{% block title %}{% trans 'Inbox' %}{% endblock %}
+
+
+
+{% block container %}
+
+  <ul class=" myButton conversation thumbnail" style="width : 620px; position : relative; top : -28px;">
+        <div class="msg_container_base msg_container_base0 scroll">
+
+    {% for message in messages %}
+      {% include 'messenger/includes/partial_message.html' %}
+    {% endfor %}
+        </div>
+    <li class="send-message">
+
+      <img src="{{ user.profile.get_picture }}" class="picture">
+      <div style="margin-top: .3em">
+
+        <form role="form"   id="send">
+          {% csrf_token %}
+          <input type="hidden" name="to" value="{{ active }}">
+
+           <input class="form-control" type="text" name="message" id="message" placeholder="Write your message..." maxlength="1000" autocomplete="off">
+
+
+
+        </form>
+
+              </div>
+                </li>
+
+   <li class="send-message1">
+
+<form role="form" id="upload-image-form" csrf="{{csrf_token}}">
+          {% csrf_token %}
+          <input  type="file" name="image">
+          <input type="hidden" name="to" value="{{ active }}">
+
+
+  <input class="btn btn-primary" type="submit" value="submit">
+
+
+        </form>
+            </li>
+
+
+  </ul>
+
+
+{% endblock container %}
+
+
+{% block container1 %}
+
+      {% include 'messenger/includes/produit_list.html' %}
+{% endblock container1 %}
+

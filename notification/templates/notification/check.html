@@ -1,0 +1,35 @@
+{% load i18n %}
+
+<div class="notification-heading"><h4 class="menu-title">Notifications</h4><a href="{% url 'notifications' %}"><h4 class="menu-title pull-right">View all<i class="glyphicon glyphicon-circle-arrow-right"></i></h4></a>
+    </div>
+    <li class="divider" ></li>
+
+   <div class="notifications-wrapper"  >
+   {% for notification in notifications %}
+
+                          <div class="notification-item">
+
+       <a class="content" href="{% url 'profile' notification.from_user.username %}"><img src="{{ notification.from_user.profile.get_picture }}" style="  height : 50px; width:45px; display:inline; position: relative; top : 70px;"></a>
+    <br>
+     <a href="{% url 'profile'  notification.from_user.username %}" style="position: relative; top : 70px;">.
+     </a>
+
+                <h5 class="item-title" style="left: 50px; position : relative;  top: -5px; z-index : 100;">
+        {% if notification.product.title != None %}
+            <span><p><a href="{% url 'profile'  notification.from_user.username %}">{{notification.from_user.username}} </a> a réagie a votre produit  {{notification.product.title}} </a>avec une reaction {{notification.type}}</p>
+        {% endif %}
+            {% if notification.post.post != None %}
+
+            <span><a href="{% url 'profile'  notification.from_user.username %}">{{notification.from_user.username}} </a> a réagie a votre post  <br>{{notification.post.user}} </a>avec une reaction<br> {{notification.type}}
+        {% endif %}
+            </span></h5>
+         <h4 class=" item-title" style="position: relative; left: 260px;">{{ notification.date }}</h4>
+        <p class="item-info">
+      </div>
+
+
+    {% empty %}
+      <li>{% trans 'You have no notification' %}</li>
+    {% endfor %}
+
+        </div>

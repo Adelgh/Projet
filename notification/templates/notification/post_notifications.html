@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+
+{% block title %} Notifications {% endblock %}
+
+{% block head %}
+{% endblock head %}
+
+{% block main %}
+  <div class="page-header" style=" position : relative; right : 57px; top : 35px;">
+    <h1>Notifications :</h1>
+  </div>
+  <ul class="all-notifications">
+    {% for notification in notifications %}
+
+        <a href="{% url 'profile' notification.from_user.username%}"><img src="{{ notification.from_user.profile.get_picture }}"  style="height : 45px; width : 45px; position : relative; right : 57px; top : 35px;"></a>
+        <div>
+          <small>{{ notification.date}}</small><br>
+<a href="{% url 'profile'  notification.from_user.username%}"> </a>   {{notification.from_user.username}}  a réagie a votre post   avec une reaction  {{notification.type}}     </div>
+
+    {% empty %}
+      <li>{% trans 'You have no notification' %}</li>
+    {% endfor %}
+  </ul>
+{% endblock main %}

@@ -1,0 +1,11 @@
+{% load static %}
+    <div>
+          <span class="comment">
+    {% if post.get_comment_count > 0 %}
+      {{ post.get_comment_count }}{% if post.get_comment_count.count > 1 %}s{% endif %}
+        {% endif %}
+    </span>
+         <a>
+<button data-id="{{comment.id }}" data-reaction="comment" class="reaction-comment comment" style="background-color: transparent; border: none;">
+<i  aria-hidden="true"></i>   </button> </a>
+    </div>

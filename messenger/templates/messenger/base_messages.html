@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+  <link href="{% static 'css/messages.css' %}" rel="stylesheet">
+  <link href="{% static 'css/scroll.css' %}" rel="stylesheet">
+  <script src="{% static 'js/messages.js' %}"></script>
+  <script src="{% static 'js/messages_user.typehead.js' %}"></script>
+
+  <script src="{% static 'produit/js/imported/jquery.typeahead.bundle.js' %}"></script>
+{% endblock head %}
+
+{% block main %}
+
+ <div class="row body" >
+<br><br>
+
+
+  <div class="page-header">
+    <a href="{% url 'new_message'  %}" class="btn btn-primary pull-right" style="position : relative; top : -30px; z-index : 1000;">New message</a>
+    <h1>{% block page_header %}{% endblock %}</h1>
+  </div>
+  <div class="row" style="position : relative; top : -90px;">
+    <div class="col-md-3">
+      {% include 'messenger/includes/partial_conversations.html' with conversations=conversations active=active %}
+    </div>
+    <div class="col-md-5" style="position : relative;  bottom : 55px; top :0px;">
+
+      {% block container %}
+      {% endblock container %}
+        </div>
+    </div>
+
+
+<div class="col-md-1 col-sm-offset-6" style="position : relative; top : -150px; left : 250px;">
+      {% block container1 %}
+      {% endblock container1 %}
+
+
+    </div>
+  </div>
+
+<script>
+$(document).ready(function(){
+$(".msg_container_base").stop().animate({ scrollTop: $(".msg_container_base")[0].scrollHeight}, 0);
+
+  $('#chat-scroll').animate({
+  scrollTop: $('#chat-scroll').get(0).scrollHeight}, 2000);
+});
+</script>
+
+
+{% endblock main %}

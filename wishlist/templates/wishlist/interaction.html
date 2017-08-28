@@ -1,0 +1,63 @@
+
+{% load static %}
+<script src="{% static 'js/popup.js' %}"></script>
+<div class="thumbnail product "   >
+  <a href="{% url 'boutique:detail_produit' product.id %}">
+    <img src="{{ product.logo.url }}" alt="{{ product.title }}" class="img-responsive-thumbnail" style="width : 160px ; height : 120px;">
+  </a>
+  <div class="caption">
+    <a href="{%url 'boutique:detail_produit' product.id%}">
+      <h3 class="title">{{ product.title }}</h3>
+    </a>
+    <span class="btn btn-primary btn-xs">{{ product.prix }} DT</span>
+  <button type="button" id="popover-{{ product.id }}" class="first btn btn-default btn-sm pull-right" data-container="body" data-toggle="popover" data-placement="left" title="My wishlists">
+      <i class="fa fa-star"></i> Wish
+    </button>
+    <span class="btn bg-info btn-xs"><a href="{% url 'boutique:boutique_detail' product.boutique.id%}">boutique de {{ product.boutique.user.username }}</a></span>
+ <div id="popover-content-{{ product.id }}" style="display: none;">
+      {% for collection in request.user.wishlist.collections.all %}
+        <label class='add-to-collection' data-product-id='{{ product.id }}' data-collection-id='{{ collection.id }}'>
+            <input type='checkbox' {% if prodit in collection.product_set.all %}checked{% endif %}>
+            {{ collection.name }}
+        </label><br>
+      {% endfor %}
+    </div>
+
+      <span class="reactions"><br>
+    {% if product.reaction_set.count > 0 %}
+      {{ product.reaction_set.count }} like{% if product.reaction_set.count > 1 %}s{% endif %}
+    {% endif %}
+    </span>
+
+    <div>
+      <button data-id="{{product.id }}" data-reaction="normal" class="reaction-button normal">
+        <img src="{% static 'img/reactions/normal.jpg' %}" alt="" width="35" height="25" >
+      </button>
+
+      <button data-id="{{ product.id }}" data-reaction="smile" class="reaction-button smile">
+        <img src="{% static 'img/reactions/smile.png' %}" alt="" width="25" height="25">
+      </button>
+
+
+      <button data-id="{{ product.id }}" data-reaction="love" class="reaction-button love">
+        <img src="{% static 'img/reactions/love.jpg' %}" alt="" width="25" height="25">
+      </button>
+      <button data-id="{{ product.id }}" data-reaction="wish" class="reaction-button wish">
+        <img src="{% static 'img/reactions/wish.png' %}" alt="" width="25" height="25">
+      </button>
+
+      <a class="popup" href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000/boutique/vosproduct/{{product.id}}">
+<button class="btn btn-primary btn-xs  fa fa-facebook fa-2x" data-id="{{product.id}}"><div style="font-size : 10px;  color : black ;"></div>
+   </button> </a>
+    </div>
+  </div>
+</div>
+
+<script>
+    $('#popover-{{ product.id }}').popover({
+      html : true,
+      content: function() {
+        return $('#popover-content-{{ product.id }}').html();
+      }
+    });
+    </script>
